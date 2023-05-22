@@ -44,8 +44,8 @@ int pointsCounter;
 
 void setup() {
   fullScreen();
-
-  myPort = new Serial(this, Serial.list()[1], 9600);
+  
+  myPort = new Serial(this, Serial.list()[3], 9600); 
   myPort.bufferUntil('\n');
 
   pointsString = "0";

@@ -1,9 +1,9 @@
-//int pinsArduinoInputs[] = { 0, 12, 2, 3, 4, 5 };
-//int pinsArduinoOutputs[] = { 6, 7, 8, 9, 10, 11 };
-//int arduinoUnoSize = 6;
-int pinsArduinoInputs[] = { 2, 7 };
-int pinsArduinoOutputs[] = { 8, 9 };
-int arduinoUnoSize = 2;
+int pinsArduinoInputs[] = { 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+int pinsArduinoOutputs[] = { 2, 3, 4, A0, A1, A2, A3, A4, A5};
+int arduinoUnoSize = 9;
+//int pinsArduinoInputs[] = {2};
+//int pinsArduinoOutputs[] = {A0};
+//int arduinoUnoSize = 1;
 
 
 bool isLevel1;
@@ -44,9 +44,9 @@ void loop() {
       isLevel3 = false;
     }
     if (code == '3') {
-      /*isLevel3 = true;
+      isLevel3 = true;
       isLevel1 = false;
-      isLevel2 = false;*/ 
+      isLevel2 = false;
     }
     if (code == '4') {
       isLevel1 = false;
@@ -64,7 +64,7 @@ void loop() {
     playLevel2(arduinoUnoSize, pinsArduinoInputs, pinsArduinoOutputs);
   }
   if (isLevel3) {
-    /*playLevel3(arduinoUnoSize, pinsArduinoInputs, pinsArduinoOutputs);*/
+    playLevel3(arduinoUnoSize, pinsArduinoInputs, pinsArduinoOutputs);
   }
 }
 
