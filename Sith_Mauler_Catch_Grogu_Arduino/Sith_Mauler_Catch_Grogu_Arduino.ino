@@ -111,7 +111,8 @@ void playLevel1(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
   unsigned long startTime = millis(); 
   pressed1 = LOW;
   unsigned long debounceDelay = 100;
-  while (millis() - startTime < 1000) {
+  unsigned long duration = 1000; // 1 second
+  while (millis() - startTime < duration) {
     pressed1 = digitalRead(pinsInput[randomValue1]);
     if (pressed1 == HIGH && millis() - startTime >= debounceDelay) {
       int matrix[] = {0,0,0,0,0,0,0,0,0};
@@ -160,7 +161,7 @@ void playLevel2(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
   pressed1 = LOW;
   pressed2 = LOW;
   unsigned long debounceDelay = 100; 
-  unsigned long duration = 10000; // 10 seconds
+  unsigned long duration = 2000; // 2 seconds
   while (millis() - startTime < duration) {
     pressed1 = digitalRead(pinsInput[randomValue1]);
     pressed2 = digitalRead(pinsInput[randomValue2]);
@@ -169,7 +170,7 @@ void playLevel2(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
       digitalWrite(pinsOutput[randomValue1], LOW);
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 2, randomValue1, randomValue2, matrix);
-      matrix[randomValue1] = 3;
+      matrix[randomValue1] = 0;
       sendArray(matrix);
     }
     if (pressed2 == HIGH && millis() - startTime >= debounceDelay ) {
@@ -177,7 +178,7 @@ void playLevel2(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
       digitalWrite(pinsOutput[randomValue2], LOW);
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 2, randomValue1, randomValue2, matrix);
-      matrix[randomValue2] = 3;
+      matrix[randomValue2] = 0;
       sendArray(matrix);
     }
     if (isPressed1 == true && isPressed2 == true) {
@@ -191,10 +192,10 @@ void playLevel2(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 2, randomValue1, randomValue2, matrix);
       if(isPressed1 == true) {
-        matrix[randomValue1] = 3;        
+        matrix[randomValue1] = 0;        
       }
       if(isPressed2 == true) {
-        matrix[randomValue2] = 3;        
+        matrix[randomValue2] = 0;        
       }
       sendArray(matrix);
     }
@@ -243,7 +244,7 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
   pressed2 = LOW;
   pressed3 = LOW; 
   unsigned long debounceDelay = 100;
-  unsigned long duration = 10000; // 10 seconds
+  unsigned long duration = 3000; // 3 seconds
   while (millis() - startTime < duration) {
     pressed1 = digitalRead(pinsInput[randomValue1]);
     pressed2 = digitalRead(pinsInput[randomValue2]);
@@ -253,7 +254,7 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
       digitalWrite(pinsOutput[randomValue1], LOW);
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 3, randomValue1, randomValue2, randomValue3, matrix);
-      matrix[randomValue1] = 3;
+      matrix[randomValue1] = 0;
       sendArray(matrix);
     }
     if (pressed2 == HIGH && millis() - startTime >= debounceDelay ) {
@@ -261,7 +262,7 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
       digitalWrite(pinsOutput[randomValue2], LOW);
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 3, randomValue1, randomValue2, randomValue3, matrix);
-      matrix[randomValue2] = 3;
+      matrix[randomValue2] = 0;
       sendArray(matrix);
     }
     if (pressed3 == HIGH && millis() - startTime >= debounceDelay ) {
@@ -284,13 +285,13 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 3, randomValue1, randomValue2, randomValue3, matrix);
       if(isPressed1 == true) {
-        matrix[randomValue1] = 3;        
+        matrix[randomValue1] = 0;        
       }
       if(isPressed2 == true) {
-        matrix[randomValue2] = 3;        
+        matrix[randomValue2] = 0;        
       }
       if(isPressed3 == true) {
-        matrix[randomValue3] = 3;        
+        matrix[randomValue3] = 0;        
       }
       sendArray(matrix);
     }
@@ -314,7 +315,7 @@ void sendArray(int* myArray){
   Serial.println();
 }
 /*
-  This method override fills the level array with representing values.
+  This method overrided fills the level array with representing values.
   Sets the random(s) index (ces) with '1' and if any input (except from the expected one(s) ) is pressed it sets it as '2'
 
 */
