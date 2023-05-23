@@ -154,8 +154,8 @@ void playLevel2(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
   } while (randomValue2 == randomValue1);
   digitalWrite(pinsOutput[randomValue1], HIGH);
   digitalWrite(pinsOutput[randomValue2], HIGH);
-  int pressed1Counter = 0;   
-  int pressed2Counter = 0;   
+  bool isPressed1 = false;   
+  bool isPressed2 = false;   
   unsigned long startTime = millis(); 
   pressed1 = LOW;
   pressed2 = LOW;
@@ -165,7 +165,7 @@ void playLevel2(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
     pressed1 = digitalRead(pinsInput[randomValue1]);
     pressed2 = digitalRead(pinsInput[randomValue2]);
     if (pressed1 == HIGH && millis() - startTime >= debounceDelay ) {
-      pressed1Counter = pressed1Counter + 1;
+      isPressed1 = true;
       digitalWrite(pinsOutput[randomValue1], LOW);
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 2, randomValue1, randomValue2, matrix);
@@ -173,14 +173,14 @@ void playLevel2(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
       sendArray(matrix);
     }
     if (pressed2 == HIGH && millis() - startTime >= debounceDelay ) {
-      pressed2Counter = pressed2Counter + 1;
+      isPressed2 = true;
       digitalWrite(pinsOutput[randomValue2], LOW);
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 2, randomValue1, randomValue2, matrix);
       matrix[randomValue2] = 3;
       sendArray(matrix);
     }
-    if (pressed1Counter == 1 && pressed2Counter == 1) {
+    if (isPressed1 == true && isPressed2 == true) {
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       matrix[randomValue1] = 3;
       matrix[randomValue2] = 3;
@@ -190,10 +190,10 @@ void playLevel2(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
     } else {
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 2, randomValue1, randomValue2, matrix);
-      if(pressed1Counter == 1) {
+      if(isPressed1 == true) {
         matrix[randomValue1] = 3;        
       }
-      if(pressed2Counter == 1) {
+      if(isPressed2 == true) {
         matrix[randomValue2] = 3;        
       }
       sendArray(matrix);
@@ -235,9 +235,9 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
   digitalWrite(pinsOutput[randomValue1], HIGH);
   digitalWrite(pinsOutput[randomValue2], HIGH);
   digitalWrite(pinsOutput[randomValue3], HIGH);
-  int pressed1Counter = 0;   
-  int pressed2Counter = 0;
-  int pressed3Counter = 0;
+  bool isPressed1 = false;   
+  bool isPressed2 = false;   
+  bool isPressed3 = false;   
   unsigned long startTime = millis();
   pressed1 = LOW;
   pressed2 = LOW;
@@ -249,7 +249,7 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
     pressed2 = digitalRead(pinsInput[randomValue2]);
     pressed3 = digitalRead(pinsInput[randomValue3]);
     if (pressed1 == HIGH && millis() - startTime >= debounceDelay ) {
-      pressed1Counter = pressed1Counter + 1;
+      isPressed1 = true;
       digitalWrite(pinsOutput[randomValue1], LOW);
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 3, randomValue1, randomValue2, randomValue3, matrix);
@@ -257,7 +257,7 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
       sendArray(matrix);
     }
     if (pressed2 == HIGH && millis() - startTime >= debounceDelay ) {
-      pressed2Counter = pressed2Counter + 1;
+      isPressed2 = true;
       digitalWrite(pinsOutput[randomValue2], LOW);
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 3, randomValue1, randomValue2, randomValue3, matrix);
@@ -265,14 +265,14 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
       sendArray(matrix);
     }
     if (pressed3 == HIGH && millis() - startTime >= debounceDelay ) {
-      pressed3Counter = pressed3Counter + 1;
+      isPressed3 = true;
       digitalWrite(pinsOutput[randomValue3], LOW);
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 3, randomValue1, randomValue2, randomValue3, matrix);
       matrix[randomValue3] = 3;
       sendArray(matrix);
     }
-    if (pressed1Counter == 1 && pressed2Counter == 1 && pressed3Counter == 1) {
+    if (isPressed1 == true && isPressed2 == true && isPressed3 == true) {
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       matrix[randomValue1] = 3;
       matrix[randomValue2] = 3;
@@ -283,13 +283,13 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
     } else {
       int matrix[] = {0,0,0,0,0,0,0,0,0};
       readButtons(sizeOfPins, pinsInput, 3, randomValue1, randomValue2, randomValue3, matrix);
-      if(pressed1Counter == 1) {
+      if(isPressed1 == true) {
         matrix[randomValue1] = 3;        
       }
-      if(pressed2Counter == 1) {
+      if(isPressed2 == true) {
         matrix[randomValue2] = 3;        
       }
-      if(pressed3Counter == 1) {
+      if(isPressed3 == true) {
         matrix[randomValue3] = 3;        
       }
       sendArray(matrix);
