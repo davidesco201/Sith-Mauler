@@ -77,10 +77,10 @@ class Home {
       playButtonClicked = true;
     }
   }
-  boolean isButtonClicked() {
+  boolean isPlayButtonClicked() {
     return playButtonClicked;
   }
-  void setButtonClicked(boolean state) {
+  void setPlayButtonClicked(boolean state) {
     this.playButtonClicked = state;
   }
 }

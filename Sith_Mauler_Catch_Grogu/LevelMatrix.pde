@@ -16,6 +16,10 @@ class LevelMatrix {
     float matrixWidth = min(width / 4, height);
     float matrixHeight = matrixWidth;
     circleSize = min(matrixWidth / cols, matrixHeight / rows);
+    /*
+      carrogrugu.png - Image source: Pinterest, [2023]. Carrogrugu. [Online image]. Available: https://www.pinterest.co.uk/pin/7036943159608445/
+      Adapted from: https://www.pinterest.co.uk/pin/7036943159608445/
+    */
     GroguCar =  loadImage("carrogrugu.png");
     float x = width / 2 - matrixWidth / 2;
     float y = titleY + height / 3 + matrixHeight / 4;

@@ -33,6 +33,10 @@ class Level {
     titleSize = 180;
     titleX = width/2;
     titleY = height/20 + titleSize;
+    /*
+      mandoandgrogu.png - Image source: Pinterest, [2019]. Mando and Grogu. [Online image]. Available: https://www.pinterest.es/pin/818951513476811095/?amp_client_id=CLIENT_ID%28_%29&mweb_unauth_id=&amp_url=https%3A%2F%2Fwww.pinterest.es%2Famp%2Fpin%2F818951513476811095%2F&amp_expand=true
+      Adapted from: https://www.pinterest.es/pin/818951513476811095/?amp_client_id=CLIENT_ID%28_%29&mweb_unauth_id=&amp_url=https%3A%2F%2Fwww.pinterest.es%2Famp%2Fpin%2F818951513476811095%2F&amp_expand=true
+    */
     GroguAndMando = loadImage("mandoandgrogu.png");
     backLevelButtonWidth = width/5;
     backLevelButtonHeight = height/15;
@@ -46,6 +50,7 @@ class Level {
   }
   void startCountDown() {
     //5 minutos => 300000
+    //Set count down and color of the lightsaber
     lightsaberTimeout = new LightsaberTimeout(30000, colorLevel);
   }
   void draw() {
