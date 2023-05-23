@@ -160,7 +160,8 @@ void playLevel2(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
   pressed1 = LOW;
   pressed2 = LOW;
   unsigned long debounceDelay = 100; 
-  while (millis() - startTime < 10000) {
+  unsigned long duration = 10000; // 10 seconds
+  while (millis() - startTime < duration) {
     pressed1 = digitalRead(pinsInput[randomValue1]);
     pressed2 = digitalRead(pinsInput[randomValue2]);
     if (pressed1 == HIGH && millis() - startTime >= debounceDelay ) {
@@ -230,7 +231,7 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
   do {
     randomValue3 = random(0, sizeOfPins);
   } while (randomValue3 == randomValue1 || randomValue3 == randomValue2);
-
+  
   digitalWrite(pinsOutput[randomValue1], HIGH);
   digitalWrite(pinsOutput[randomValue2], HIGH);
   digitalWrite(pinsOutput[randomValue3], HIGH);
@@ -242,7 +243,8 @@ void playLevel3(int sizeOfPins, int pinsInput[], int pinsOutput[]) {
   pressed2 = LOW;
   pressed3 = LOW; 
   unsigned long debounceDelay = 100;
-  while (millis() - startTime < 10000) {
+  unsigned long duration = 10000; // 10 seconds
+  while (millis() - startTime < duration) {
     pressed1 = digitalRead(pinsInput[randomValue1]);
     pressed2 = digitalRead(pinsInput[randomValue2]);
     pressed3 = digitalRead(pinsInput[randomValue3]);
